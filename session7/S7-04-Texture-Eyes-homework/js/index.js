@@ -6,6 +6,7 @@ var image;
 var mouseX = 0, mouseY = 0;
 var container, stats;
 var cubes=[];
+var cubesNum=10;
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
@@ -26,7 +27,7 @@ function init() {
 	var light = new THREE.PointLight( 0xffffff, 1 );
 	camera.add( light );
 
-for(n=0;n<10;n++){
+for(var n=0;n<cubesNum;n++){
 	var material = new THREE.MeshPhongMaterial( {
 		color: 0xffffff,
 		specular: 0x050505,
@@ -47,13 +48,14 @@ for(n=0;n<10;n++){
 			uvs[ j ].y = face.vertexNormals[ j ].y * 0.5 + 0.5;
 		}
 	}
-	var cubescale=(Math.random()*-2);
+
  mesh=new THREE.Mesh(geometry,material);
 	mesh.position.x=(Math.random()*-200)+40;
-	mesh.position.y=(Math.random()*-100)+50;
-	mesh.scale.x=cubescale;
-	mesh.scale.y=cubescale;
-	mesh.scale.z=cubescale;
+	mesh.position.y=(Math.random()*-100)+40;
+	mesh.position.z=(Math.random()*-150)+40;
+	mesh.scale.x=(Math.random()*-0.5)+1;
+	mesh.scale.y=(Math.random()*-0.5)+1;
+	mesh.scale.z=(Math.random()*-0.5)+1;
 
 
 scene.add( mesh );
