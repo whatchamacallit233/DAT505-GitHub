@@ -48,14 +48,14 @@ for(var n=0;n<cubesNum;n++){
 			uvs[ j ].y = face.vertexNormals[ j ].y * 0.5 + 0.5;
 		}
 	}
-
+var eyescale=(Math.random()*-0.5)+1;
  mesh=new THREE.Mesh(geometry,material);
 	mesh.position.x=(Math.random()*-200)+40;
 	mesh.position.y=(Math.random()*-100)+40;
 	mesh.position.z=(Math.random()*-150)+40;
-	mesh.scale.x=(Math.random()*-0.5)+1;
-	mesh.scale.y=(Math.random()*-0.5)+1;
-	mesh.scale.z=(Math.random()*-0.5)+1;
+	mesh.scale.x=eyescale;
+	mesh.scale.y=eyescale;
+	mesh.scale.z=eyescale;
 
 
 scene.add( mesh );
@@ -81,8 +81,8 @@ function animate() {
 function render() {
 	console.log(window.innerHeight)
 	cubes.forEach(function(c,i){
-		cubes[i].rotation.x = mouseY/window.innerHeight*2;
-		cubes[i].rotation.y = mouseX/window.innerWidth*2;
+		c.rotation.x = mouseY/window.innerHeight*2;
+		c.rotation.y = mouseX/window.innerWidth*2;
 	});
 
 
