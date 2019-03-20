@@ -63,8 +63,12 @@ mesh1 = new THREE.Mesh( geometry1, material1 );
 var render = function () {
   requestAnimationFrame( render );
 
-mesh1.rotation.x += 0.01; //Continuously rotate the mesh
- mesh1.rotation.y += 0.01;
+mesh1.rotation.x += 0.5; //Continuously rotate the mesh
+ mesh1.rotation.y += 0.5;
+ mesh2.rotation.x += 0.3; //Continuously rotate the mesh
+  mesh2.rotation.y += 0.3;
+  mesh3.rotation.x += 0.2; //Continuously rotate the mesh
+   mesh3.rotation.y += 0.2;
 
   renderer.setClearColor("#000000");
 
