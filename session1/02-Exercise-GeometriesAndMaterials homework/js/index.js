@@ -17,7 +17,7 @@ function init(){
   renderer = new THREE.WebGLRenderer({antialias:true});
 
   // Configure renderer clear color
-  renderer.setClearColor("#000000");
+  renderer.setClearColor("#9999FF");
 
   // Configure renderer size
   renderer.setSize( window.innerWidth, window.innerHeight );
@@ -70,7 +70,7 @@ mesh1.rotation.x += 0.5; //Continuously rotate the mesh
   mesh3.rotation.x += 0.2; //Continuously rotate the mesh
    mesh3.rotation.y += 0.2;
 
-  renderer.setClearColor("#000000");
+  renderer.setClearColor("#9999FF");
 
   // Render the scene
   renderer.render(scene, camera);
