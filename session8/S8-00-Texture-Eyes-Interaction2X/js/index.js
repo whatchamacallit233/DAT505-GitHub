@@ -1,13 +1,13 @@
 // MatCap-style image rendered on a sphere
 // modify sphere UVs instead of using a ShaderMaterial
 
-var camera, scene, renderer;
+var camera, scene, renderer, mesh;
 var image;
 var mouseX = 0, mouseY = 0;
-var container, stats;
-var cubes=[];
-var cubesNum=10;
+var container;
 
+var eyesNum = 5;
+var eyes = [];
 var xPos = [];
 var yPos = [];
 var xPosMap = [];
@@ -33,6 +33,7 @@ function init() {
 	var light = new THREE.PointLight( 0xffffff, 1 );
 	camera.add( light );
 
+	var geometry = new THREE.SphereGeometry( 30, 32, 16 );
 
 	var material = new THREE.MeshPhongMaterial( {
 		color: 0xffffff,
@@ -40,8 +41,6 @@ function init() {
 		shininess: 50,
 		map: THREE.ImageUtils.loadTexture('images/eye.png'),
 	});
-
-	var geometry = new THREE.SphereGeometry( 30, 32, 16 );
 
 
   // modify UVs to accommodate MatCap texture
@@ -55,22 +54,45 @@ function init() {
 		}
 	}
 
-	for(var i=0;i<cubesNum;i++){
-var eyescale=(Math.random()*-0.5)+1;
- mesh=new THREE.Mesh(geometry,material);
-	mesh.position.x=(Math.random()*-200)+40;
-	mesh.position.y=(Math.random()*-100)+40;
-	mesh.position.z=(Math.random()*-150)+40;
-	mesh.scale.x=eyescale;
-	mesh.scale.y=eyescale;
-	mesh.scale.z=eyescale;
+	for (var i = 0; i < eyesNum; i++) {
+		mesh = new THREE.Mesh( geometry, material );
 
+		xPos[i] = Math.random() * 100 - 50;
+		yPos[i] = Math.random() * 100 - 50;
 
-scene.add( mesh );
-cubes.push(mesh);
-}
+		xPos [0] = 0;
+		yPos [0] = 0;
 
+		xPos [1] = -50;
+		yPos [1] = -50;
 
+		xPos [2] = 50;
+		yPos [2] = -50;
+
+		xPos [3] = -50;
+		yPos [3] = 50;
+
+		xPos [4] = 50;
+		yPos [4] = 50;
+
+		xPosMap[i] = map_range(xPos[i], -50, 50, 0, window.innerWidth);
+		yPosMap[i] = map_range(yPos[i], -50, 50, 0, window.innerHeight);
+
+		//console.log(xPosMap[1]);
+
+		mesh.position.x = xPos[i];
+		mesh.position.y = yPos[i];
+
+		var randSize = Math.random() * 0.8;
+		mesh.scale.x = randSize;
+		mesh.scale.y = randSize;
+		mesh.scale.z = randSize;
+
+		scene.add( mesh );
+		eyes.push( mesh );
+	}
+
+	//console.log(mesh);
 
 	renderer = new THREE.WebGLRenderer();
 	renderer.setPixelRatio( window.devicePixelRatio );
@@ -87,13 +109,22 @@ function animate() {
 }
 
 function render() {
-	console.log(window.innerHeight)
-	cubes.forEach(function(c,i){
-		c.rotation.x = mouseY/window.innerHeight*2;
-		c.rotation.y = mouseX/window.innerWidth*2;
-	});
+	console.log(mouseY)
+	for (var i = 0; i < eyesNum; i++) {
 
+		eyes[0].rotation.y = map_range(mouseX, 0, window.innerWidth, -1.14, 1.14);
+		eyes[0].rotation.x = map_range(mouseY, 0, window.innerHeight, -1.14, 1.14);
 
+		if (mouseX<140) eyes[1].rotation.y = map_range(mouseX, 0, 140, -0.2, 0.25);
+		else eyes[1].rotation.y = map_range(mouseX, 140, window.innerWidth, 0.25, 1.14);
+		if (mouseY<810) eyes[1].rotation.x = map_range(mouseY, 0, 810, -1.14, -0.25);
+		else eyes[1].rotation.x = map_range(mouseY, 810, window.innerHeight, -0.25, 0);
+
+		if (mouseX<140) eyes[3].rotation.y = map_range(mouseX, 0, 140, -0.2, 0.25);
+		else eyes[3].rotation.y = map_range(mouseX, 140, window.innerWidth, 0.25, 1.14);
+		if (mouseY<35) eyes[3].rotation.x = map_range(mouseY, 0, 35, 0, 0.25);
+		else eyes[3].rotation.x = map_range(mouseY, 35, window.innerHeight, 0.25, 1.14);
+  }
 	renderer.render( scene, camera );
 }
 
@@ -105,6 +136,11 @@ function onWindowResize() {
 }
 
 function onDocumentMouseMove( event ) {
-  mouseX = event.clientX - windowHalfX;
-  mouseY = event.clientY - windowHalfY;
+	//mouseX = event.clientX - windowHalfX;
+  mouseX = event.clientX;
+  mouseY = event.clientY;
+}
+
+function map_range(value, low1, high1, low2, high2) {
+	return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
