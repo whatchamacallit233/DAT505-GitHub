@@ -12,7 +12,7 @@ camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight,
 var renderer = new THREE.WebGLRenderer({antialias:true});
 
 // Configure renderer clear color
-renderer.setClearColor("#5A8296");
+renderer.setClearColor("#5A8268");
 
 // Configure renderer size
 renderer.setSize( window.innerWidth, window.innerHeight );
@@ -39,26 +39,26 @@ var geometry = new THREE.BoxGeometry(100, 100, 100);
 
 
  //MATERIAL 1:
-var material1 = new THREE.MeshBasicMaterial( { color: "#433F81" } );
+var material1 = new THREE.MeshNormalMaterial(  );
 
 //MATERIAL 2:
 //var material2 = new THREE.MeshNormalMaterial();
 
 //MATERIAL 3:
 
-var material2 = new THREE.MeshLambertMaterial({
+/*var material2 = new THREE.MeshLambertMaterial({
   color: "#433F81",
   transparent: true,
   opacity: 1
 });
-
+*/
 
 //MATERIAL 4:
-//var material = new THREE.MeshPhongMaterial({shininess: 1});
+var material2 = new THREE.MeshPhongMaterial({shininess: 1});
 
 //MATERIAL 5 (non-shiny material):
 
-var material3 = new THREE.MeshLambertMaterial({
+var material3 = new THREE.MeshStandardMaterial({
   color: '#D2BE82',
   lightMap: null,
   lightMapIntensity: 1,
@@ -81,12 +81,7 @@ material5 = new THREE.MeshBasicMaterial( { color: "#8470FF" } );
  mesh5 = new THREE.Mesh( geometry, material );
  mesh5.position.z = -1000;
 
- //geometry2 = new THREE.IcosahedronBufferGeometry(100, 1);
- //material2 = new THREE.WireframeGeometry( { color: "#8470FF" } );
- //mesh2 = new THREE.Mesh( geometry, material );
- //mesh2.position.z = -100;
- // Add mesh to scene
- //scene.add( mesh );
+
 
 
 //MATERIAL 6 (shiny material):
