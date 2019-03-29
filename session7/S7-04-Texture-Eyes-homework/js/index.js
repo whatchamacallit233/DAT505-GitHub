@@ -56,11 +56,35 @@ function init() {
 	}
 
 	for(var i=0;i<cubesNum;i++){
-var eyescale=(Math.random()*-0.5)+1;
- mesh=new THREE.Mesh(geometry,material);
-	mesh.position.x=(Math.random()*-200)+40;
-	mesh.position.y=(Math.random()*-100)+40;
-	mesh.position.z=(Math.random()*-150)+40;
+mesh=new THREE.Mesh(geometry,material);
+
+xPos[i] = Math.random() * 100 - 50;
+		yPos[i] = Math.random() * 100 - 50;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mesh.position.x=(Math.random()*-200)+40;
+mesh.position.y=(Math.random()*-100)+40;
+mesh.position.z=(Math.random()*-150)+40;
+
+
+var eyescale=Math.random()*0.8;
 	mesh.scale.x=eyescale;
 	mesh.scale.y=eyescale;
 	mesh.scale.z=eyescale;

@@ -87,7 +87,7 @@ function onDocumentMousemove( event ) {
     }
   }
 }
-function onDocumentMousemove( event ) {
+function onDocumentMouseDown( event ) {
   event.preventDefault();
   if ( selectedObject ) {
     selectedObject.material.color.set( '#69f' );
