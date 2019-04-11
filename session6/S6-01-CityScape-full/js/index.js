@@ -67,7 +67,7 @@ function setupWorld() {
 
     //Randomize position and scale of the buildings
     building.position.x = Math.floor( Math.random() * 200 - 100 ) * 4;
-    building.position.y = Math.floor( Math.random() * 200 - 100) * 40;
+    building.position.y = Math.floor( Math.random() * 200 - 100) * 30;
     building.position.z = Math.floor( Math.random() * 200 - 100 ) * 4;
     building.scale.x  = Math.pow(Math.random(), 2) * 500 + 10;
     building.scale.y  = Math.pow(Math.random(), 3) * building.scale.x * 8 + 8;

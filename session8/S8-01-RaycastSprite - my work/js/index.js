@@ -54,6 +54,7 @@ function init() {
 
   window.addEventListener( 'resize', onWindowResize, false );
   window.addEventListener( 'mousemove', onDocumentMousemove,false);
+  window.addEventListener( 'mousedown', onDocumentMouseDown,false);
 
 }
 
@@ -71,7 +72,7 @@ function onWindowResize() {
 function onDocumentMousemove( event ) {
   event.preventDefault();
   if ( selectedObject ) {
-    selectedObject.material.color.set( Math.random()*0xFFFFFF );
+    selectedObject.material.color.set( '#69f' );
     selectedObject =null;
   }
 
@@ -82,8 +83,8 @@ function onDocumentMousemove( event ) {
     } )[ 0 ];
     if ( res && res.object ) {
       selectedObject = res.object;
-      //selectedObject.material.color.set( '#f00' );
-      console.log(selectedObject.scale);
+      selectedObject.material.color.set( Math.random()*0xFFFFFF );
+      
     }
   }
 }
@@ -100,9 +101,7 @@ function onDocumentMouseDown( event ) {
     } )[ 0 ];
     if ( res && res.object ) {
       selectedObject = res.object;
-      selectedObject.material.color.set(Math.random()*0xFFFFFF );
-      //selectedObject.material.color.set( '#f00' );
-      console.log(selectedObject.position);
+      console.log(selectedObject.scale);
     }
   }
 }

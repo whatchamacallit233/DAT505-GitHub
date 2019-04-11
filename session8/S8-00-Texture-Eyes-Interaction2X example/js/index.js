@@ -5,7 +5,6 @@ var camera, scene, renderer, mesh;
 var image;
 var mouseX = 0, mouseY = 0;
 var container;
-
 var eyesNum = 5;
 var eyes = [];
 var xPos = [];
@@ -60,7 +59,7 @@ function init() {
 		xPos[i] = Math.random() * 100 - 50;
 		yPos[i] = Math.random() * 100 - 50;
 
-		xPos [0] = 0;
+		/*xPos [0] = 0;
 		yPos [0] = 0;
 
 		xPos [1] = -50;
@@ -73,7 +72,7 @@ function init() {
 		yPos [3] = 50;
 
 		xPos [4] = 50;
-		yPos [4] = 50;
+		yPos [4] = 50;*/
 
 		xPosMap[i] = map_range(xPos[i], -50, 50, 0, window.innerWidth);
 		yPosMap[i] = map_range(yPos[i], -50, 50, 0, window.innerHeight);

@@ -66,11 +66,9 @@ function animate() {
 for(var i=0;i<cubes.length;i++){
 
 
-	// Rotate the x position of the mesh by 0.03
+
 	cubes[i].rotation.x += 0.02;
-	// Rotate the y position of the mesh by 0.02
-cubes[i].rotation.y += 0.01;
-	//Move the mesh towards the bottom of the screen
+	cubes[i].rotation.y += 0.01;
 	cubes[i].position.y -= speed[i];
 
 
@@ -79,9 +77,9 @@ cubes[i].rotation.y += 0.01;
 	if (cubes[i].position.y <-30){
 		cubes[i].position.y =50 ;
 		cubes[i].position.x = (Math.random() * -20) +5;
-	  cubes[i].scale.x = (Math.random()*-2)+2;
-		 cubes[i].scale.y = (Math.random()*-2)+2;
-		  cubes[i].scale.z =(Math.random()*-2)+2;
+		cubes[i].scale.x = (Math.random()*-2)+2;
+		cubes[i].scale.y = (Math.random()*-2)+2;
+		cubes[i].scale.z =(Math.random()*-2)+2;
 	}
 }
 
