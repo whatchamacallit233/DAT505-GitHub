@@ -42,21 +42,10 @@ var geometry = new THREE.BoxGeometry(100, 100, 100);
 var material1 = new THREE.MeshNormalMaterial(  );
 
 //MATERIAL 2:
-//var material2 = new THREE.MeshNormalMaterial();
 
-//MATERIAL 3:
-
-/*var material2 = new THREE.MeshLambertMaterial({
-  color: "#433F81",
-  transparent: true,
-  opacity: 1
-});
-*/
-
-//MATERIAL 4:
 var material2 = new THREE.MeshPhongMaterial({shininess: 1});
 
-//MATERIAL 5 (non-shiny material):
+//MATERIAL 3
 
 var material3 = new THREE.MeshStandardMaterial({
   color: '#D2BE82',
@@ -68,60 +57,20 @@ var material3 = new THREE.MeshStandardMaterial({
   specularMap: null
 });
 
-// Create a Cube Mesh with basic material ---------
+//MATERIAL 4
 var texture = new THREE.TextureLoader().load("texture.jpg");
 
 var material4 = new THREE.MeshBasicMaterial( {
 map:texture} );
 
-var material = new THREE.MeshNormalMaterial();
 
+//MATERIAL 5
 geometry5= new THREE.ConeGeometry(150, 150, 150);
 material5 = new THREE.MeshBasicMaterial( { color: "#8470FF" } );
- mesh5 = new THREE.Mesh( geometry, material );
+ mesh5 = new THREE.Mesh( geometry, material5 );
  mesh5.position.z = -1000;
 
 
-
-
-//MATERIAL 6 (shiny material):
-/*var material = new THREE.MeshPhongMaterial({
-  color: 0xF3FFE2,
-  specular: 0xffffff,
-  shininess: 1000,
-  lightMap: null,
-  lightMapIntensity: 1,
-  bumpMap: null,
-  bumpScale: 1,
-  normalMap: null,
-  normalScale: 1,
-  displacementMap: null,
-  displacementScale: 1,
-  displacementBias: 0,
-  specularMap: null
-});
-*/
-
-/*
-//MATERIAL 6 (combination of shiny + non-shinny):
-var material = new THREE.MeshStandardMaterial({
-  color: 0xF3FFE2,
-  roughness: 0.5,
-  metalness: 0.5
-});
-*/
-
-/*
-//MATERIAL 7 (physical-based material)
-var material = new THREE.MeshPhysicalMaterial({
-  color: 0xF3FFE2,
-  roughness: 0,
-  metalness: 0.5,
-  reflectivity: 0.5,
-  clearCoat: 0,
-  claerCoatRoughness: 0
-});
-*/
 
 var mesh1 = new THREE.Mesh( geometry, material1 );
 mesh1.position.z = -1000;
