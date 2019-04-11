@@ -40,14 +40,14 @@ function init() {
   for (var i=0; i<500; i++){
   // Model/material loading!
 	var mtlLoader = new THREE.MTLLoader();
-	mtlLoader.load("Blocks.mtl", function(materials){
+	mtlLoader.load("elephant2.mtl", function(materials){
 
 		materials.preload();
 
     var objLoader = new THREE.OBJLoader();
 		objLoader.setMaterials(materials);
 
-  		objLoader.load("ship.obj", function(mesh){
+  		objLoader.load("elephant2.obj", function(mesh){
   			mesh.traverse(function(node){
   				if( node instanceof THREE.Mesh ){
   					node.castShadow = true;
@@ -64,7 +64,7 @@ function init() {
   		});
   	});
   }
-
+  
   raycaster = new THREE.Raycaster();
 
   renderer = new THREE.WebGLRenderer();
@@ -120,7 +120,7 @@ function render() {
       INTERSECTED.currentHex = INTERSECTED.material.emissive.getHex();
       INTERSECTED.material.emissive.setHex( 0xff0000 );
 
-      audioLoader.load( 'audio/Diploship-Fly.wav', function( buffer ) {
+      audioLoader.load( 'audio/9577.wav', function( buffer ) {
         sound.setBuffer( buffer );
         sound.setLoop( false );
         sound.setVolume( 0.5 );
