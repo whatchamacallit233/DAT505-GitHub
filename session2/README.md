@@ -36,10 +36,28 @@ which means the rotation is changing all the time,so meshs can be dynamic
 
 We can set different rotation to different mesh:
 ```javascript
-  mesh1.rotation.x = rot+1; 
+  mesh1.rotation.x = rot+1;
   mesh1.rotation.y = rot+1;
-  
-  mesh2.rotation.x = rot; 
+
+  mesh2.rotation.x = rot;
   mesh2.rotation.y = rot;
 
   ```
+
+## 03-COPY-ThreeJS-Materials my work
+For this exercise, we were asked to copy one example on Threejs and make it work on our computers.
+First,I chose a project named buffergeometry/constructed/from/geometry from threejs.org website.
+Then,I viewed the source of head part and searched referenced js files from threejs material package which we have downloaded.
+Besides,add the referenced .js file in to js package.
+On top of that,I add the following code in index.html file:
+```javascript
+<script src="js/TrackballControls.js"></script>
+<script src="js/stats.min.js"></script>
+<script src="js/WebGL.js"></script>
+```
+Finally,I copied the rest code of body part into my index.js and changed index.html'body part like following:
+```javascript
+<body>
+<script src="js/index.js"></script>
+</body>
+```
