@@ -23,7 +23,7 @@ function init(){
 }
 
 function geometry(){
-  // Create a Cube Mesh with basic material ---------
+  // Create a object---------
   geometry = new THREE.CylinderBufferGeometry(50, 50,200,50);
   material = new THREE.MeshLambertMaterial( { color: Math.random()* 0xFFFFFF,wireframe:true} );
   mesh = new THREE.Mesh( geometry, material );

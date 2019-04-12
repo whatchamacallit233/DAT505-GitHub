@@ -28,7 +28,6 @@ function init(){
 
 function geometry(){
   // Create a IcosahedronBufferGeometry inside---------
-
 geometry1 = new THREE.IcosahedronBufferGeometry(70,1);
  material1 = new THREE.MeshNormalMaterial( { color: "#8470FF" } );
 mesh1 = new THREE.Mesh( geometry1, material1 );
@@ -36,12 +35,8 @@ mesh1 = new THREE.Mesh( geometry1, material1 );
   cubes.push(mesh1);
   scene.add( mesh1);
 
-/* geometry1 = new THREE.ConeGeometry(150, 150, 150);
-  material1 = new THREE.MeshBasicMaterial( { color: "#FFFFFF" } );
-  mesh1 = new THREE.Mesh( geometry1, material1 );
-  mesh1.position.z = -1000;*/
 
-// Create a IcosahedronBufferGeometry wireframe 0utside---------
+// Create two IcosahedronBufferGeometry wireframe 0utside---------
   geometry2 = new THREE.IcosahedronBufferGeometry(100, 1);
   material2 = new THREE.MeshBasicMaterial( { color: Math.random()*0xFFFFFF,wireframe:true } );
   mesh2 = new THREE.Mesh( geometry2, material2 );
@@ -67,8 +62,8 @@ mesh1.rotation.x += 0.5; //Continuously rotate the mesh
  mesh1.rotation.y += 0.5;
  mesh2.rotation.x += 0.3; //Continuously rotate the mesh
   mesh2.rotation.y += 0.3;
-  mesh3.rotation.x += 0.2; //Continuously rotate the mesh
-   mesh3.rotation.y += 0.2;
+  mesh3.rotation.x += 0.01; //Continuously rotate the mesh
+   mesh3.rotation.y += 0.01;
 
   renderer.setClearColor("#9999FF");
 
