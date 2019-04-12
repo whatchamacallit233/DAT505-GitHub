@@ -57,33 +57,14 @@ function init() {
 
 	for(var i=0;i<cubesNum;i++){
 mesh=new THREE.Mesh(geometry,material);
-
+//set each eye in ramdom position :
 xPos[i] = Math.random() * 100 - 50;
 		yPos[i] = Math.random() * 100 - 50;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//set random position in x y z:
 mesh.position.x=(Math.random()*-200)+40;
 mesh.position.y=(Math.random()*-100)+40;
 mesh.position.z=(Math.random()*-150)+40;
-
-
+//set random scale:
 var eyescale=Math.random()*0.8;
 	mesh.scale.x=eyescale;
 	mesh.scale.y=eyescale;

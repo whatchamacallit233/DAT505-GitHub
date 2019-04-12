@@ -1,7 +1,8 @@
 # session 7
 ## S7-02-texture-cube practice-my work
 add 3 texture as cubes' material and let then show randomly
-	```javascript
+
+```javascript
   var randomSelection=Math.round(Math.random()*3);
   texture = new THREE.TextureLoader().load( "texture"+randomSelection+".jpg" );
   material = new THREE.MeshBasicMaterial( { map: texture} );
@@ -24,4 +25,28 @@ add 3 texture as cubes' material and let then show randomly
   		cubes[i].scale.z =(Math.random()*-2)+2;
   	}
   }
+```
+##S7-04-Texture-Eyes-homework
+set each eye in ramdom position :
+```javascript
+for(var i=0;i<cubesNum;i++){
+mesh=new THREE.Mesh(geometry,material);
+```
+set each eye in ramdom position :
+```javascript
+xPos[i] = Math.random() * 100 - 50;
+	yPos[i] = Math.random() * 100 - 50;
+```
+set random position in x y z:
+```javascript
+mesh.position.x=(Math.random()*-200)+40;
+mesh.position.y=(Math.random()*-100)+40;
+mesh.position.z=(Math.random()*-150)+40;
+```
+set random scale:
+```javascript
+var eyescale=Math.random()*0.8;
+mesh.scale.x=eyescale;
+mesh.scale.y=eyescale;
+mesh.scale.z=eyescale;
 ```
