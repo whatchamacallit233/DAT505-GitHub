@@ -65,10 +65,7 @@ map:texture} );
 
 
 //MATERIAL 5
-
 material5 = new THREE.MeshBasicMaterial( { color: "#8470FF" } );
-
-
 
 
 
@@ -157,7 +154,7 @@ var render = function () {
   mesh1.rotation.y = rot+1;
 
   mesh2.rotation.x = rot; //Continuously rotate the mesh
-  mesh2.rotation.y = rot;
+  mesh2.rotation.y = 0;
 
   mesh3.rotation.x = rot+2; //Continuously rotate the mesh
   mesh3.rotation.y = rot+2;
