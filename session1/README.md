@@ -31,11 +31,11 @@ It made by three IcosahedronBufferGeometries with different size. While,they hav
 ```javascript
 function geometry(){
   // Create a IcosahedronBufferGeometry inside---------
-geometry1 = new THREE.IcosahedronBufferGeometry(70,1);
+ geometry1 = new THREE.IcosahedronBufferGeometry(70,1);
  material1 = new THREE.MeshNormalMaterial( { color: "#8470FF" } );
-mesh1 = new THREE.Mesh( geometry1, material1 );
+ mesh1 = new THREE.Mesh( geometry1, material1 );
  mesh1.position.z = -1000;
-  cubes.push(mesh1);
+ cubes.push(mesh1);
   scene.add( mesh1);
 // Create two IcosahedronBufferGeometry wireframe 0utside---------
   geometry2 = new THREE.IcosahedronBufferGeometry(100, 1);
@@ -60,12 +60,12 @@ Continuously rotate the mesh in different speed:
 ```javascript
 var render = function () {
   requestAnimationFrame( render );
-mesh1.rotation.x += 0.5; 
+ mesh1.rotation.x += 0.5; 
  mesh1.rotation.y += 0.5;
  mesh2.rotation.x += 0.3; 
-  mesh2.rotation.y += 0.3;
-  mesh3.rotation.x += 0.2; 
-   mesh3.rotation.y += 0.2;
+ mesh2.rotation.y += 0.3;
+ mesh3.rotation.x += 0.2; 
+ mesh3.rotation.y += 0.2;
   renderer.setClearColor("#9999FF");
   // Render the scene
   renderer.render(scene, camera);
