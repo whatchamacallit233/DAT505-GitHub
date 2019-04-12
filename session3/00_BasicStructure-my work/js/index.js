@@ -72,12 +72,9 @@ function init(){
 
   f1.add(controller,'scaleX',0.1,5).onChange(function(){
     mesh.scale.x=(controller.scaleX)});
-
-    f1.add(controller,'scaleY',0.1,5).onChange(function(){
-      mesh.scale.y=(controller.scaleY);
-    });
-
-    f1.add(controller,'scaleZ',0.1,5).onChange(function(){
+  f1.add(controller,'scaleY',0.1,5).onChange(function(){
+      mesh.scale.y=(controller.scaleY)});
+  f1.add(controller,'scaleZ',0.1,5).onChange(function(){
       mesh.scale.z=(controller.scaleZ)});
 
 
