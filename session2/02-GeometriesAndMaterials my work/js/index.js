@@ -65,10 +65,10 @@ map:texture} );
 
 
 //MATERIAL 5
-geometry5= new THREE.ConeGeometry(150, 150, 150);
+
 material5 = new THREE.MeshBasicMaterial( { color: "#8470FF" } );
- mesh5 = new THREE.Mesh( geometry, material5 );
- mesh5.position.z = -1000;
+
+
 
 
 
@@ -145,7 +145,6 @@ scene.add( mesh9 );
 scene.add( mesh10 );
 scene.add( mesh11 );
 scene.add( mesh12 );
-
 var rot = 0;
 
 // Render Loop
