@@ -61,3 +61,46 @@ Finally,I copied the rest code of body part into my index.js and changed index.h
 <script src="js/index.js"></script>
 </body>
 ```
+
+
+## 04-homework
+I Created a composition with 3 geometries by using different materials.
+One of it is BoxGeometry,made by MeshPhongMaterial：
+```javascript
+var geometry1 = new THREE.BoxGeometry(100, 100, 100);
+var material1 = new THREE.MeshPhongMaterial({
+  color: 0xF3FFE2,
+  specular: 0xffffff,
+  shininess: 1000,
+  lightMap: null,
+  lightMapIntensity: 1,
+  bumpMap: null,
+  bumpScale: 1,
+  normalMap: null,
+  normalScale: 1,
+  displacementMap: null,
+  displacementScale: 1,
+  displacementBias: 0,
+  specularMap: null
+});
+```
+One of it is IcosahedronBufferGeometry,made by MeshLambertMaterial and set wireframe：
+```javascript
+var geometry2 = new THREE.IcosahedronBufferGeometry(100, 1);
+var material2 = new THREE.MeshLambertMaterial({
+  color: '#D2BE82',
+  lightMap: null,
+  lightMapIntensity: 1,
+  emissive: 0x000000,
+  emissiveMap: null,
+  emissiveIntensity: 1,
+  specularMap: null,
+  wireframe:true
+});
+```
+The third one used the texture I drawn by myself:
+```javascript
+var texture = new THREE.TextureLoader().load("texture2.jpg")
+geometry3= new THREE.ConeGeometry(150, 150, 150);
+material3 = new THREE.MeshBasicMaterial( { map:texture} );
+```
