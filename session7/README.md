@@ -1,11 +1,13 @@
 # session 7
-S7-02-texture-cube practice-my work
+## S7-02-texture-cube practice-my work
 add 3 texture as cubes' material and let then show randomly
 	```javascript
   var randomSelection=Math.round(Math.random()*3);
   texture = new THREE.TextureLoader().load( "texture"+randomSelection+".jpg" );
   material = new THREE.MeshBasicMaterial( { map: texture} );
-  ```
+```
+
+
   add animation:
   ```javascript
   for(var i=0;i<cubes.length;i++){
