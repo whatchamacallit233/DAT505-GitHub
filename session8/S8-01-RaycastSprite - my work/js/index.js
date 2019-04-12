@@ -68,14 +68,13 @@ function onWindowResize() {
   camera.updateProjectionMatrix();
   renderer.setSize( window.innerWidth, window.innerHeight );
 }
-
+//move mouse on shape will change to a random colour
 function onDocumentMousemove( event ) {
   event.preventDefault();
   if ( selectedObject ) {
     selectedObject.material.color.set( '#69f' );
     selectedObject =null;
   }
-
   var intersects = getIntersects( event.layerX, event.layerY );
   if ( intersects.length > 0 ) {
     var res = intersects.filter( function ( res ) {
@@ -88,9 +87,9 @@ function onDocumentMousemove( event ) {
     }
   }
 }
+//click on shape will print on console its size
 function onDocumentMouseDown( event ) {
   event.preventDefault();
-
   var intersects = getIntersects( event.layerX, event.layerY );
   if ( intersects.length > 0 ) {
     var res = intersects.filter( function ( res ) {
