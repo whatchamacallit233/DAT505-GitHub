@@ -13,7 +13,7 @@ function init() {
 	// Create a geometry
 	// 	Create a box (cube) of 10 width, length, and height
 	geometry = new THREE.BoxGeometry( 10, 10, 10 );
-
+//set randomValue
 	for (var i=0;i<cubesNum;i++){
 		var randomValue=Math.random()*0.5;
 		speed.push(randomValue);
