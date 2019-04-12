@@ -30,7 +30,7 @@ var controls,color;
 				var controls=new THREE.OrbitControls(camera,renderer.domElement);
 				document.body.appendChild(renderer.domElement);
 				window.addEventListener( 'resize', onWindowResize, false );
-					// Create a Cube Mesh with material -------
+					// Create a alterable geometry -------
 				var geometry = createGeometry();
 				color = Math.random() * 0xffffff;
 				var material = new THREE.MeshPhongMaterial( {
