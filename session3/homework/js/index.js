@@ -30,7 +30,7 @@ var controls,color;
 				var controls=new THREE.OrbitControls(camera,renderer.domElement);
 				document.body.appendChild(renderer.domElement);
 				window.addEventListener( 'resize', onWindowResize, false );
-					// Create a alterable geometry -------
+					// Create an alterable geometry -------
 				var geometry = createGeometry();
 				color = Math.random() * 0xffffff;
 				var material = new THREE.MeshPhongMaterial( {
@@ -41,12 +41,22 @@ var controls,color;
 				} );
 				mesh = new THREE.Mesh( geometry, material );
 				scene.add( mesh );
-
+     // add new function-------
 				var controller = new function() {
 						this.Color = color;
 							this.Opacity = 1;
 						}();
-
+						//Color converter
+						function dec2hex(i) {
+							var result = "0x000000";
+							if (i >= 0 && i <= 15) { result = "0x00000" + i.toString(16); }
+							else if (i >= 16 && i <= 255) { result = "0x0000" + i.toString(16); }
+							else if (i >= 256 && i <= 4095) { result = "0x000" + i.toString(16); }
+							else if (i >= 4096 && i <= 65535) { result = "0x00" + i.toString(16); }
+							else if (i >= 65535 && i <= 1048575) { result = "0x0" + i.toString(16); }
+							else if (i >= 1048575 ) { result = '0x' + i.toString(16); }
+							if (result.length == 8){return result;}
+						}
        initGUI();
 
 			function createGeometry() {
@@ -82,11 +92,12 @@ var controls,color;
 				return geometry;
 			}
 			function initGUI() {
-				// Set up dat.GUI to control targets
+
 				var params = {
 					Spherify: 0,
 					Twist: 0,
 				};
+				// Set up dat.GUI to control targets
 				var gui = new dat.GUI();
 
 				var folder = gui.addFolder( 'Morph Targets' );
@@ -105,17 +116,7 @@ var controls,color;
 				folder.open();
 			}
 		}
-		//Color converter
-		function dec2hex(i) {
-			var result = "0x000000";
-			if (i >= 0 && i <= 15) { result = "0x00000" + i.toString(16); }
-			else if (i >= 16 && i <= 255) { result = "0x0000" + i.toString(16); }
-			else if (i >= 256 && i <= 4095) { result = "0x000" + i.toString(16); }
-			else if (i >= 4096 && i <= 65535) { result = "0x00" + i.toString(16); }
-			else if (i >= 65535 && i <= 1048575) { result = "0x0" + i.toString(16); }
-			else if (i >= 1048575 ) { result = '0x' + i.toString(16); }
-			if (result.length == 8){return result;}
-		}
+
 			// Render Loop
 			function render () {
 				requestAnimationFrame(render);

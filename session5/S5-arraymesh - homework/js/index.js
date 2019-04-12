@@ -23,7 +23,7 @@ function init() {
   renderer.setSize(W, H);
   //renderer.shadowMapEnabled = true;
 
-  //Create a two dimensional grid of objects, and position them accordingly
+  //Create a three dimensional grid of objects, and position them accordingly
   for (var x = -10; x <= 10; x += 10)
   for (var y =-10 ; y <= 10; y += 10)
 for (var z =-10 ; z <= 10; z += 10)
@@ -42,12 +42,12 @@ for (var z =-10 ; z <= 10; z += 10)
       mesh.position.y =0//Math.random()*0.5;
       mesh.position.Z =0//Math.random()*0.5;
 
-    //  mesh.scale.y = 0.5;
 
+//set random rotation in three dimension
 mesh.rotation.x=Math.random()*2*Math.PI;
 mesh.rotation.y=Math.random()*2*Math.PI;
 mesh.rotation.z=Math.random()*3*Math.PI;
-
+//set random speed of rotation in three dimension
 var randomValueX=(Math.random()*0.5-0.25);
 var randomValueY=(Math.random()*0.5-0.25);
 var randomValueZ=(Math.random()*0.5-0.25);
@@ -65,11 +65,11 @@ var scaleCube= -5
 
 function drawFrame(){
   requestAnimationFrame(drawFrame);
-
+//set the maximum scale of cubes:
 scaleCube += 0.02;
 if(scaleCube>1)scaleCube=-5;
 
-
+//add rotation function
 cubes.forEach(function(c,i){
 c.rotation.x=0.01;
 c.rotation.y=0.01;

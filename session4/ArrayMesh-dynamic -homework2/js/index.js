@@ -57,7 +57,7 @@ function drawFrame(){
 
   cubes.forEach(function(c, i) {
     c.rotation.x += randomRotationX[i];
-      c.rotation.y += randomRotationY[i];
+    c.rotation.y += randomRotationY[i];
   });
 
 
