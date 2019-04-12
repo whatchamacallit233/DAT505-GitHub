@@ -35,3 +35,6 @@ cubes.forEach(function(c,i){
 c.rotation.x=0.01;
 c.rotation.y=0.01;
 ```
+
+## S5-arraymesh-classtest-my work
+I learnt how to set animation to specific cubes or for each cube.
