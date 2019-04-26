@@ -358,7 +358,7 @@ var loadClouds = function (){
 	var bgGround = new THREE.Mesh(geometry_bgGround,material_bgGround);
 
 	//set the rotation and position
-	bgGround.rotation.x = -Math.PI/2
+	bgGround.rotation.x = -Math.PI/2//make it parallel to the ground
 	bgGround.position.y = 2
 	bgGround.position.z = -1.5
 	scene.add(bgGround)

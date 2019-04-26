@@ -331,6 +331,40 @@ for (var i = 0; i < drops.length; i++) {
 }
 ```
 Another challenging part for me is add the function of creating clouds by click.
-Originally,i want to creat clouds by clicking the river.With the purpose of showing the relationship between water and clouds.Unfortunately i failed.I can just creat clouds at the position where clicked.
+Originally,with the purpose of showing the relationship between water and clouds.I want to creat clouds by clicking river.Unfortunately i failed.I can just creat clouds at the position where clicked:
 
 ![created clouds in river](https://github.com/whatchamacallit233/DAT505-GitHub/blob/master/Xiaowei%20Ji-DAT505-Assignment/texture/failed.jpg)
+
+So I set an invisible plane in the sky directly, which is parallel to the ground:
+```javascript
+   var geometry_bgGround = new THREE.PlaneGeometry(5,5.8);
+   var material_bgGround = new THREE.MeshBasicMaterial({visible:false});
+   var bgGround = new THREE.Mesh(geometry_bgGround,material_bgGround);
+
+	bgGround.rotation.x = -Math.PI/2
+
+```
+  The most important thing is add 'Bplace'function,it can make object clickable,wrote the following code at the begining:
+```javascript
+var Bplace  = [];
+```
+And add this to make it act on the plane i set before:
+```javascript
+Bplace.push(bgGround)
+```
+Then load the cloud model which is in the format of fbx.So i add a FBXLoader.js to load it:
+```javascript
+var fbxLoader = new THREE.FBXLoader();
+fbxLoader.load('model/file.fbx', function(object){
+```
+In addition,i set the scale of clouds:
+```javascript
+ var models = object;
+	models.scale.set(.085,.075,.075)
+```
+While i found that the orginal color of the cloud object is quite dark,so i printed the cloud object:
+```javascript
+console.log(object)
+```
+and found that it in type of 'group'.Then i found the
+![console]
