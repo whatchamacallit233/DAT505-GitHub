@@ -367,4 +367,4 @@ While i found that the orginal color of the cloud object is quite dark,so i prin
 console.log(object)
 ```
 and found that it in type of 'group'.Then i found the
-![console]
+![console](https://github.com/whatchamacallit233/DAT505-GitHub/blob/master/Xiaowei%20Ji-DAT505-Assignment/texture/console.jpg)
