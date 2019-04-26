@@ -18,7 +18,7 @@ and the main js:'index.js'
 the model of 'cloud'
 
 * ##### 'skyboxing'file:
-6 different angles picture of sky,which constitutes the whole sky
+6 different angles pictures of sky,which constitutes the whole sky
 
 * ##### 'texture'files:
 textures of river,water drop,trees and bridge
