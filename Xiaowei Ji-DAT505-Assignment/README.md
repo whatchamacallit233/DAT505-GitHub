@@ -332,4 +332,5 @@ for (var i = 0; i < drops.length; i++) {
 ```
 Another challenging part for me is add the function of creating clouds by click.
 Originally,i want to creat clouds by clicking the river.With the purpose of showing the relationship between water and clouds.Unfortunately i failed.I can just creat clouds at the position where clicked.
-![image of the project]
+
+![image of the project] (https://github.com/whatchamacallit233/DAT505-GitHub/blob/master/Xiaowei%20Ji-DAT505-Assignment/texture/failed.png)
