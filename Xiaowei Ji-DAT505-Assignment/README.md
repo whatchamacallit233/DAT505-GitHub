@@ -32,4 +32,4 @@ The project shows the view of a park,including an adjustable land,plenty of rand
 Also,I add the audio of waterfall,it effects when the project starts.In addition,i add skybox to make the scene closer to reality.Apart from this,I add orbitcontrols.js to make the park be available to see from multi-angle.
 
 ## Details
-https://github.com/whatchamacallit233/DAT505-GitHub/blob/master/Xiaowei%20Ji-DAT505-Assignment/texture/3.jpg
+![alt text](https://github.com/whatchamacallit233/DAT505-GitHub/blob/master/Xiaowei%20Ji-DAT505-Assignment/texture/3.jpg)
