@@ -259,8 +259,8 @@ I set up a new folder named 'skyboxing',added the 6 angles of sky,including righ
 ```javascript
 var path = "skyboxing/";
 var urls = [ path + "px.jpg", path + "nx.jpg",
-					  path + "py.jpg", path + "ny.jpg",
-					 	path + "pz.jpg", path + "nz.jpg" ];
+		     path + "py.jpg", path + "ny.jpg",
+			 path + "pz.jpg", path + "nz.jpg" ];
 
 var  textureCube1 = new THREE.CubeTextureLoader().load( urls );
 		 scene.background = textureCube1;
@@ -305,7 +305,7 @@ this.lifespan = (Math.random()*Math.round(waterLength)+50);
 ```
 after that,add the function of update them drop from different position in different speed,which make it closer to reality:
 ```javascript
- this.update = function () {
+  this.update = function () {
   this.speed += .0007;
   this.lifespan--;
   this.drop.position.x += (.5 - this.drop.position.x) / 70;
