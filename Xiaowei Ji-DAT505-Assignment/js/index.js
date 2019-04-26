@@ -1,26 +1,48 @@
 //Global variables
 var scene, camera, renderer,controller;
-var color,grass,trunk,leaves,tree;
+var Bplace  = [];//make the object clickable
+var color,grass;
 //GUI - Declare variable
 var gui = null;
+
 
 //Create water drops
 var drops = [];
 var count = 0;
 var geometry = new THREE.BoxGeometry(.1, .1, .1);
+// Load a texture
+var texturew =  new THREE.TextureLoader().load( "texture/texture.jpg" );
+var material_river = new THREE.MeshLambertMaterial({ map:texturew });
+
 var drop = new THREE.Mesh(geometry, material_river);
+
+// create an AudioListener and add it to the camera
+var listener = new THREE.AudioListener();
+
+// create a global audio source
+var sound = new THREE.Audio( listener );
+
+// load a sound and set it as the Audio object's buffer
+var audioLoader = new THREE.AudioLoader();
+
+
 init();
 
 function init() {
+
+
 
   // Create an empty scene ------------
   scene = new THREE.Scene();
 
   //create a camera-------
   camera = new THREE.PerspectiveCamera(25, window.innerWidth / window.innerHeight, .1, 1000);
-  camera.position.set(-5, 6, 8);
+  camera.position.set(-6, 1, 15);
   camera.lookAt(new THREE.Vector3(0, 0, 0));
+  //Audio - Settings
+    camera.add( listener );
 
+  var raycaster = new THREE.Raycaster();
   // Create a renderer-------
   renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
 
@@ -76,7 +98,8 @@ function init() {
 
 
   //bridge
-  var material_wood = new THREE.MeshLambertMaterial({ color: 0xA98F78 });
+  var texture= new THREE.TextureLoader().load( "texture/textureBridge.jpg" );
+  var material_wood = new THREE.MeshBasicMaterial( {map:texture});
   //bridge - wood block
   var geometry_block = new THREE.BoxGeometry(1.2, .02, .4);
   var block = new THREE.Mesh(geometry_block, material_wood);
@@ -135,6 +158,74 @@ function init() {
   group.add(rail_h2);
   scene.add(group);
 
+  //set tree as the combination of trunk and leaves
+  var tree = function (x, z) {
+    tree.x = x;
+    tree.z = z;
+
+    //trunk
+    var material_trunk = new THREE.MeshLambertMaterial({ color: 0x9A6169 });
+    var geometry_trunk = new THREE.BoxGeometry(.15, .15, .15);
+    var trunk = new THREE.Mesh(geometry_trunk, material_trunk);
+    trunk.position.set(tree.x, .275, tree.z);
+    trunk.castShadow = true;
+    trunk.receiveShadow = true;
+    scene.add(trunk);
+
+    //leaves
+    var geometry_leaves = new THREE.BoxGeometry(.25, .4, .25);
+    //Generate a random number from 1 to 3
+    var randomSelection=Math.round(Math.random()*4+1);
+    // Load a texture
+   var texture = new THREE.TextureLoader().load( "texture/texture"+randomSelection+".jpg" );
+	// Create a MeshBasicMaterial with a loaded texture
+    var material_leaves = new THREE.MeshBasicMaterial({map: texture});
+    var leaves = new THREE.Mesh(geometry_leaves, material_leaves);
+    leaves.position.set(tree.x, .2 + .15 + .4 / 2, tree.z);
+    leaves.castShadow = true;
+    customizeShadow(leaves, .25) // mess, opacity
+    scene.add(leaves);
+  }
+
+
+  //set random quantity and position for trees on 2 sides
+   for (var x = -3; x <= 40; x += 1) {
+    if (x <= 20) {
+   tree(Math.random() *1.7 -1.9 , Math.random() * -3);//set trees on the left side
+    }
+    else {
+  tree(Math.random() * 1.7 + 1.2, Math.random() * -3);//set trees on the right side
+    }
+  }
+
+
+  //give shadow to trees
+  function customizeShadow(t, a) { //opacity, target mesh
+    var material_shadow = new THREE.ShadowMaterial({ opacity: a });
+    var mesh_shadow = new THREE.Mesh(t.geometry, material_shadow);
+    mesh_shadow.position.set(t.position.x, t.position.y, t.position.z);
+    mesh_shadow.receiveShadow = true;
+    scene.add(mesh_shadow);
+  }
+
+  //river
+  var geometry_river = new THREE.BoxGeometry(1, .1, 6);
+  // Load a texture
+  var texture =  new THREE.TextureLoader().load( "texture/texture.jpg" );
+  var material_river = new THREE.MeshLambertMaterial({ map:texture });
+  var river = new THREE.Mesh(geometry_river, material_river);
+  river.position.set(.5, .1, -2);
+  scene.add(river);
+  //give shadow to river
+  customizeShadow(river, .08) // mess, opacity
+
+  audioLoader.load( 'audio/water.wav', function( buffer ) {
+        sound.setBuffer( buffer );
+        sound.setLoop( false );
+        sound.setVolume( 0.5 );
+        sound.play();
+
+      });
   //add controller values for GUI
   controller = new function () {
 
@@ -161,7 +252,7 @@ function init() {
   f1.add(controller, 'scaleY', 0, 1).onChange(function () {
     ground_left.scale.y = ground_right.scale.y = (controller.scaleY)
   });
-  f1.add(controller, 'scaleZ', 0.7, 1).onChange(function () {
+  f1.add(controller, 'scaleZ', 0.7, 1.2).onChange(function () {
     ground_left.scale.z = ground_right.scale.z = (controller.scaleZ)
   });
 
@@ -174,7 +265,7 @@ function init() {
 
   f3.add(controller, 'waterLength', 10, 50).onChange(function () {
     for (var i = 0; i <  drops.length; i++) {
-      drops[i].lifespan = controller.waterLength;
+      drops[i].speed = controller.waterLength;
     }
   });
   f3.add(controller, 'waterSpeed', 0, .07).onChange(function () {
@@ -191,6 +282,17 @@ function init() {
     material_grass.opacity = (controller.Opacity);
     });
 
+
+    //sky
+    //function skyBox() {
+var path = "skyboxing/";
+var urls = [ path + "px.jpg", path + "nx.jpg",
+					  path + "py.jpg", path + "ny.jpg",
+					 	path + "pz.jpg", path + "nz.jpg" ];
+
+var  textureCube1 = new THREE.CubeTextureLoader().load( urls );
+		 scene.background = textureCube1;
+
 }
 
 //Color converter
@@ -205,63 +307,7 @@ function dec2hex(i) {
   if (result.length == 8){return result;}
 }
 
-//river
-var geometry_river = new THREE.BoxGeometry(1, .1, 6);
-var material_river = new THREE.MeshLambertMaterial({ color: 0x70B7E3 });
-var river = new THREE.Mesh(geometry_river, material_river);
-river.position.set(.5, .1, -2);
-scene.add(river);
-//give shadow to river
-customizeShadow(river, .08) // mess, opacity
 
-//set tree as the combination of trunk and leaves
-var tree = function (x, z) {
-  tree.x = x;
-  tree.z = z;
-
-  //trunk
-  var material_trunk = new THREE.MeshLambertMaterial({ color: 0x9A6169,transparent: true });
-  var geometry_trunk = new THREE.BoxGeometry(.15, .15, .15);
-  var trunk = new THREE.Mesh(geometry_trunk, material_trunk);
-  trunk.position.set(tree.x, .275, tree.z);
-  trunk.castShadow = true;
-  trunk.receiveShadow = true;
-  scene.add(trunk);
-
-  //leaves
-  var geometry_leaves = new THREE.BoxGeometry(.25, .4, .25);
-  var material_leaves = new THREE.MeshLambertMaterial({ color: 0x65BB61,transparent: true });
-  var leaves = new THREE.Mesh(geometry_leaves, material_leaves);
-  leaves.position.set(tree.x, .2 + .15 + .4 / 2, tree.z);
-  leaves.castShadow = true;
-  customizeShadow(leaves, .25) // mess, opacity
-  scene.add(leaves);
-}
-//combine trunk and leaves as a group
-/* var group=new THREE.Group();
-  group.add(trunk);
-  group.add(leaves);
-  scene.add(group);*/
-
-//set random quantity and position for trees on 2 sides
- for (var x = -3; x <= 40; x += 1) {
-  if (x <= 20) {
- tree(Math.random() * -1.7 - 0.7, Math.random() * -3);//set trees on the left side
-  }
-  else {
-tree(Math.random() * -1.7 + 2.9, Math.random() * -3);//set trees on the right side
-  }
-}
-
-
-//give shadow to trees
-function customizeShadow(t, a) { //opacity, target mesh
-  var material_shadow = new THREE.ShadowMaterial({ opacity: a });
-  var mesh_shadow = new THREE.Mesh(t.geometry, material_shadow);
-  mesh_shadow.position.set(t.position.x, t.position.y, t.position.z);
-  mesh_shadow.receiveShadow = true;
-  scene.add(mesh_shadow);
-}
 
 
 
@@ -288,19 +334,87 @@ var Drop = function (waterLength,waterSpeed) {
 //add water drop animation function
 var render = function () {
   requestAnimationFrame(render);
-  if (count % 3 == 0) {
+if (count % 3 == 0) {
     for (var i = 0; i < 5; i++) {
       drops.push(new Drop(controller.waterLength,controller.waterSpeed));
     }
-  }
-  count++;
-  for (var i = 0; i < drops.length; i++) {
+}
+count++;
+for (var i = 0; i < drops.length; i++) {
     drops[i].update();
     if (drops[i].lifespan < 0) {
       scene.remove(scene.getObjectById(drops[i].drop.id));
       drops.splice(i, 1);
     }
-  }
+}
   renderer.render(scene, camera);
 }
+
+
+var loadClouds = function (){
+  //create a clickable ground,and set it invisible
+  var geometry_bgGround = new THREE.PlaneGeometry(5,5.8);
+  var material_bgGround = new THREE.MeshBasicMaterial({visible:false});
+	var bgGround = new THREE.Mesh(geometry_bgGround,material_bgGround);
+
+	//set the rotation and position
+	bgGround.rotation.x = -Math.PI/2
+	bgGround.position.y = 2
+	bgGround.position.z = -1.5
+	scene.add(bgGround)
+  //make the bgGround clickable
+	Bplace.push(bgGround)
+
+  // Model loading
+	var fbxLoader = new THREE.FBXLoader();
+	fbxLoader.load('model/file.fbx', function(object){
+
+		var models = object;
+
+		models.scale.set(.085,.075,.075)
+    //set color for Clouds
+		models.children[0].children[0].material.color = new THREE.Color(0XB0E2FF)
+
+
+		//scene.add(models)
+
+		rayBreathing(models)
+	})
+
+ }
+ loadClouds()
+   function rayBreathing(obj) {
+				document.addEventListener('click', ray);
+
+				function ray() {
+
+					var Sx = event.clientX;
+					var Sy = event.clientY;
+					//transform screen coordinate to standardVector
+					var x = (Sx / window.innerWidth) * 2 - 1;
+					var y = -(Sy / window.innerHeight) * 2 + 1;
+					var standardVector = new THREE.Vector3(x, y, 0.5);
+					//transform standardVector to worldVector
+					var worldVector = standardVector.unproject(camera);
+					//set ray(worldVector subtract camera position)
+					var ray = worldVector.sub(camera.position).normalize();
+					//set raycaster
+					var raycaster = new THREE.Raycaster(camera.position, ray);
+					//the object which is affected by raycaster
+					var intersects = raycaster.intersectObjects(Bplace); //Bplace
+
+					if(intersects.length > 0) {
+
+						var bone = intersects[0]
+						var name = bone.name
+
+						var nowModel = obj.clone();
+						nowModel.receiveShadow = true;
+						nowModel.castShadow = true
+						nowModel.position.copy(bone.point)
+						scene.add(nowModel)
+					}
+				}
+			}
+
 render();
