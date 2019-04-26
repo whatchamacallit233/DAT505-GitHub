@@ -182,15 +182,15 @@ var group = new THREE.Group();
 set the function of controlling  bridge's position Z and scale Z:
 ```javascript
 controller = new function () {
-this.positionZ = -1;
+  this.positionZ = -1;
   this.BridgescaleZ = 1;
 var gui = new dat.GUI();
-  var f2 = gui.addFolder('Bridge Position');
+var f2 = gui.addFolder('Bridge Position');
 
-  f2.add(controller, 'positionZ', -4, -0.5).onChange(function () {
+f2.add(controller, 'positionZ', -4, -0.5).onChange(function () {
    group.position.z = (controller.positionZ)
     });
-    f2.add(controller, 'BridgescaleZ', 0.5, 2.5).onChange(function () {
+f2.add(controller, 'BridgescaleZ', 0.5, 2.5).onChange(function () {
       group.scale.z = (controller.BridgescaleZ)
     });
 ```
@@ -229,8 +229,8 @@ var tree = function (x, z) {
 
 Then I set random position(in x and z) for trees on 2 sides of river:(By the following way can make the number of trees on 2 sides the same)
 ```javascript
-   for (var x = 0 x <= 40; x += 1) {
-    if (x <= 20) {
+    for (var x = 0 x <= 40; x += 1) {
+  if (x <= 20) {
    tree(Math.random() *1.7 -1.9 , Math.random() * -3);//set trees on the left side
     }
     else {
@@ -284,12 +284,12 @@ Then add the following code after controller function and dat.gui respectively t
   var f3 = gui.addFolder('water Center');
 
   f3.add(controller, 'waterLength', 10, 50).onChange(function () {
-      for (var i = 0; i <  drops.length; i++) {
+  for (var i = 0; i <  drops.length; i++) {
         drops[i].speed = controller.waterLength;
       }
     });
-    f3.add(controller, 'waterSpeed', 0, .07).onChange(function () {
-      for (var i = 0; i <  drops.length; i++) {
+  f3.add(controller, 'waterSpeed', 0, .07).onChange(function () {
+   for (var i = 0; i <  drops.length; i++) {
         drops[i].speed = controller.waterSpeed;
       }
     });
@@ -305,7 +305,7 @@ this.lifespan = (Math.random()*Math.round(waterLength)+50);
 ```
 after that,add the function of update them drop from different position in different speed,which make it closer to reality:
 ```javascript
-this.update = function () {
+ this.update = function () {
   this.speed += .0007;
   this.lifespan--;
   this.drop.position.x += (.5 - this.drop.position.x) / 70;
@@ -317,14 +317,14 @@ Then add animation function of drops:
 var render = function () {
   requestAnimationFrame(render);
 if (count % 3 == 0) {
-    for (var i = 0; i < 5; i++) {
+for (var i = 0; i < 5; i++) {
       drops.push(new Drop(controller.waterLength,controller.waterSpeed));
     }
 }
 count++;
 for (var i = 0; i < drops.length; i++) {
     drops[i].update();
-    if (drops[i].lifespan < 0) {
+if (drops[i].lifespan < 0) {
       scene.remove(scene.getObjectById(drops[i].drop.id));
       drops.splice(i, 1);
     }
@@ -375,14 +375,13 @@ models.children[0].children[0].material.color = new THREE.Color(0XB0E2FF)
 ```
 The latst challenging thing is to transfrom screen coordinate to standardVector,then transform standardVector to worldVector.For the purpose of creating clouds at the position where clicked:
 ```javascript
-     var Sx = event.clientX;
-      var Sy = event.clientY;
-      //transform screen coordinate to standardVector
-      var x = (Sx / window.innerWidth) * 2 - 1;
-      var y = -(Sy / window.innerHeight) * 2 + 1;
-      var standardVector = new THREE.Vector3(x, y, 0.5);
-      //transform standardVector to worldVector
-      var worldVector = standardVector.unproject(camera);
+    var Sx = event.clientX;
+    var Sy = event.clientY;
+  //transform screen coordinate to standardVector
+    var x = (Sx / window.innerWidth) * 2 - 1;
+    var y = -(Sy / window.innerHeight) * 2 + 1;
+    var standardVector = new THREE.Vector3(x, y, 0.5);//transform standardVector to worldVector
+    var worldVector = standardVector.unproject(camera);
 ```
 make it effective when click:
 ```javascript
