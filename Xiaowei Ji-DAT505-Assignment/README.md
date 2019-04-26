@@ -36,7 +36,7 @@ Also,I add the audio of waterfall,it effects when the project starts.In addition
 
 The idea of making this project is from the beauty of nature.Nature is the  combination of dynamic and static,which can be demonstrated by code exactly.So i set 'nature ' as the theme of my project.
 
-To begin with,I write basic code to set scene,camera,renderer,light.Then I create a river and used a water texture as the material :
+To begin with,I write basic code to set scene,camera,renderer,light.Then I create a river and use a water texture as the material :
 ```javascript
 //river
   var geometry_river = new THREE.BoxGeometry(1, .1, 6);
@@ -71,7 +71,7 @@ Then,set 2 grasslands at the left and right sides of river:
   //give shadow to right
   customizeShadow(ground_right, .25) // mess, opacity
 ```
-I also add the function of changing grassland 's scaleY and scaleZ(the reason why I haven't made it changable in scaleX is that it contains two part,it would cover the river if been widen):
+I also add the function of changing grassland 's scaleY and scaleZ(the reason why I haven't made it changable in scaleX is that it contains two part,it would cover the river if been widen,also, they would leave space when been shrinked in scaleX):
 ```javascript  
 controller = new function () {
 
@@ -179,3 +179,157 @@ var group = new THREE.Group();
   group.add(rail_h2);
   scene.add(group);
 ```
+set the function of controlling  bridge's position Z and scale Z:
+```javascript
+controller = new function () {
+this.positionZ = -1;
+  this.BridgescaleZ = 1;
+var gui = new dat.GUI();
+  var f2 = gui.addFolder('Bridge Position');
+
+  f2.add(controller, 'positionZ', -4, -0.5).onChange(function () {
+   group.position.z = (controller.positionZ)
+    });
+    f2.add(controller, 'BridgescaleZ', 0.5, 2.5).onChange(function () {
+      group.scale.z = (controller.BridgescaleZ)
+    });
+```
+
+Besides, I set trees as the combination of trunk and leaves.
+I thought that the only difference in position of each tree's trunk and leaves is the position of Y, so i named their position of x and z as tree.x and tree.z,which means each tree's trunk and leaves can share the same x and z.So they can move together :
+```javascript
+var tree = function (x, z) {
+  tree.x = x;
+  tree.z = z;
+
+  //trunk
+  var material_trunk = new THREE.MeshLambertMaterial({ color: 0x9A6169 });
+  var geometry_trunk = new THREE.BoxGeometry(.15, .15, .15);
+  var trunk = new THREE.Mesh(geometry_trunk, material_trunk);
+  trunk.position.set(tree.x, .275, tree.z);
+  trunk.castShadow = true;
+  trunk.receiveShadow = true;
+  scene.add(trunk);
+
+  //leaves
+  var geometry_leaves = new THREE.BoxGeometry(.25, .4, .25);
+  //Generate a random number from 1 to 3
+  var randomSelection=Math.round(Math.random()*4+1);
+  // Load a texture
+ var texture = new THREE.TextureLoader().load( "texture/texture"+randomSelection+".jpg" );
+// Create a MeshBasicMaterial with a loaded texture
+  var material_leaves = new THREE.MeshBasicMaterial({map: texture});
+  var leaves = new THREE.Mesh(geometry_leaves, material_leaves);
+  leaves.position.set(tree.x, .2 + .15 + .4 / 2, tree.z);
+  leaves.castShadow = true;
+  customizeShadow(leaves, .25) // mess, opacity
+  scene.add(leaves);
+}
+```
+
+Then I set random position(in x and z) for trees on 2 sides of river:(By the following way can make the number of trees on 2 sides the same)
+```javascript
+   for (var x = 0 x <= 40; x += 1) {
+    if (x <= 20) {
+   tree(Math.random() *1.7 -1.9 , Math.random() * -3);//set trees on the left side
+    }
+    else {
+  tree(Math.random() * 1.7 + 1.2, Math.random() * -3);//set trees on the right side
+    }
+  }
+```
+add the sound of water flow(continue from the begining to the end )
+```javascript
+// create an AudioListener and add it to the camera
+var listener = new THREE.AudioListener();
+// create a global audio source
+var sound = new THREE.Audio( listener );
+// load a sound and set it as the Audio object's buffer
+var audioLoader = new THREE.AudioLoader();
+
+audioLoader.load( 'audio/water.wav', function( buffer ) {
+        sound.setBuffer( buffer );
+        sound.setLoop( true );
+        sound.setVolume( 0.6 );
+        sound.play();
+      });
+```
+Then i created the sky:
+I set up a new folder named 'skyboxing',added the 6 angles of sky,including right,left,up,down,back and front angles.And wrote the following code(the sequence of coding them should be the same as adove):
+```javascript
+var path = "skyboxing/";
+var urls = [ path + "px.jpg", path + "nx.jpg",
+					  path + "py.jpg", path + "ny.jpg",
+					 	path + "pz.jpg", path + "nz.jpg" ];
+
+var  textureCube1 = new THREE.CubeTextureLoader().load( urls );
+		 scene.background = textureCube1;
+```
+One of the challenging part of the work is to create dynamic drops.The first step is to create the drops which make up the waterfall,i wrote it at the begining:
+```javascript
+//Create water drops
+var drops = [];
+var count = 0;
+var geometry = new THREE.BoxGeometry(.1, .1, .1);
+// Load a texture
+var texturew =  new THREE.TextureLoader().load( "texture/texture.jpg" );
+var material_river = new THREE.MeshLambertMaterial({ map:texturew });
+var drop = new THREE.Mesh(geometry, material_river);
+```
+Then add the following code after controller function and dat.gui respectively to make the length and speed of waterfall controllable on interface :
+```javascript
+  this.waterLength = 10;
+  this.waterSpeed = 0.01;
+
+  var f3 = gui.addFolder('water Center');
+
+  f3.add(controller, 'waterLength', 10, 50).onChange(function () {
+      for (var i = 0; i <  drops.length; i++) {
+        drops[i].speed = controller.waterLength;
+      }
+    });
+    f3.add(controller, 'waterSpeed', 0, .07).onChange(function () {
+      for (var i = 0; i <  drops.length; i++) {
+        drops[i].speed = controller.waterSpeed;
+      }
+    });
+```
+
+ Set drop position ,speed,lifespan:
+```javascript
+//Create random values for drop x and z
+this.drop.position.set(Math.random(.1, .9), 0.1, 1 + (Math.random() - .5) * .1);
+this.speed = waterSpeed;
+//the length of waterfall
+this.lifespan = (Math.random()*Math.round(waterLength)+50);
+```
+after that,add the function of update them drop from different position in different speed,which make it closer to reality:
+```javascript
+this.update = function () {
+  this.speed += .0007;
+  this.lifespan--;
+  this.drop.position.x += (.5 - this.drop.position.x) / 70;
+  this.drop.position.y -= this.speed;
+}
+```
+Then add animation function of drops:
+```javascript
+var render = function () {
+  requestAnimationFrame(render);
+if (count % 3 == 0) {
+    for (var i = 0; i < 5; i++) {
+      drops.push(new Drop(controller.waterLength,controller.waterSpeed));
+    }
+}
+count++;
+for (var i = 0; i < drops.length; i++) {
+    drops[i].update();
+    if (drops[i].lifespan < 0) {
+      scene.remove(scene.getObjectById(drops[i].drop.id));
+      drops.splice(i, 1);
+    }
+}
+```
+Another challenging part for me is add the function of creating clouds by click.
+Originally,i want to creat clouds by clicking the river.With the purpose of showing the relationship between water and clouds.Unfortunately i failed.I can just creat clouds at the position where clicked.
+![image of the project]

@@ -188,7 +188,7 @@ function init() {
   }
 
 
-  //set random quantity and position for trees on 2 sides
+  //make the number of trees on 2 sides the same and set random position for trees in each side
    for (var x = -3; x <= 40; x += 1) {
     if (x <= 20) {
    tree(Math.random() *1.7 -1.9 , Math.random() * -3);//set trees on the left side
@@ -221,8 +221,8 @@ function init() {
 
   audioLoader.load( 'audio/water.wav', function( buffer ) {
         sound.setBuffer( buffer );
-        sound.setLoop( false );
-        sound.setVolume( 0.5 );
+        sound.setLoop( true );
+        sound.setVolume( 0.6 );
         sound.play();
 
       });
@@ -320,7 +320,7 @@ var Drop = function (waterLength,waterSpeed) {
   this.speed = waterSpeed;
   //the length of waterfall
   this.lifespan = (Math.random()*Math.round(waterLength)+50);
-  //the speed of water drop
+  //update them drop from different position in different speed
   this.update = function () {
     this.speed += .0007;
     this.lifespan--;
