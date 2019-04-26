@@ -348,23 +348,65 @@ So I set an invisible plane in the sky directly, which is parallel to the ground
 ```javascript
 var Bplace  = [];
 ```
-And add this to make it act on the plane i set before:
+And add this to make it act on the plane I set before:
 ```javascript
 Bplace.push(bgGround)
 ```
-Then load the cloud model which is in the format of fbx.So i add a FBXLoader.js to load it:
+Then load the cloud model which is in the format of fbx.So I add a FBXLoader.js to load it:
 ```javascript
 var fbxLoader = new THREE.FBXLoader();
 fbxLoader.load('model/file.fbx', function(object){
 ```
-In addition,i set the scale of clouds:
+In addition,I set the scale of clouds:
 ```javascript
  var models = object;
 	models.scale.set(.085,.075,.075)
 ```
-While i found that the orginal color of the cloud object is quite dark,so i printed the cloud object:
+While I found that the orginal color of the cloud object is quite dark,so i printed the cloud object:
 ```javascript
 console.log(object)
 ```
-and found that it in type of 'group'.Then i found the
+and found that it is in type of 'group'.Then i found the children of it:
 ![console](https://github.com/whatchamacallit233/DAT505-GitHub/blob/master/Xiaowei%20Ji-DAT505-Assignment/texture/console.jpg)
+
+So I changed the color of clouds by the following code:
+```javascript
+models.children[0].children[0].material.color = new THREE.Color(0XB0E2FF)
+```
+The latst challenging thing is to transfrom screen coordinate to standardVector,then transform standardVector to worldVector.For the purpose of creating clouds at the position where clicked:
+```javascript
+     var Sx = event.clientX;
+      var Sy = event.clientY;
+      //transform screen coordinate to standardVector
+      var x = (Sx / window.innerWidth) * 2 - 1;
+      var y = -(Sy / window.innerHeight) * 2 + 1;
+      var standardVector = new THREE.Vector3(x, y, 0.5);
+      //transform standardVector to worldVector
+      var worldVector = standardVector.unproject(camera);
+```
+make it effective when click:
+```javascript
+document.addEventListener('click', ray);
+```
+
+Finally,set ray and intersects,add the function of clone
+```javascript
+//set ray(worldVector subtract camera position)
+        var ray = worldVector.sub(camera.position).normalize();
+        //set raycaster
+        var raycaster = new THREE.Raycaster(camera.position, ray);
+        //the object which is affected by raycaster
+        var intersects = raycaster.intersectObjects(Bplace); //Bplace
+
+        if(intersects.length > 0) {
+
+          var bone = intersects[0]
+          var name = bone.name
+
+          var nowModel = obj.clone();
+          nowModel.receiveShadow = true;
+          nowModel.castShadow = true
+          nowModel.position.copy(bone.point)
+          scene.add(nowModel)
+      }
+```
