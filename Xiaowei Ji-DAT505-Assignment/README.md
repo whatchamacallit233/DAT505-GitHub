@@ -1,4 +1,4 @@
-# B161006068 Xiaowei Ji
+# Xiaowei Ji
 my github link:https://github.com/whatchamacallit233/DAT505-GitHub
 ## files:
 * ##### '4 images  of final screen composition' file :
