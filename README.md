@@ -1,3 +1,3 @@
 
-Creative Programming - Xiaowei Ji 
+Creative Coding- Xiaowei Ji 
 
