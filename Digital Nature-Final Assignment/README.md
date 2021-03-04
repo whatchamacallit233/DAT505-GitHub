@@ -35,7 +35,7 @@ Most importantly, the project provides a creator's perspective for audiences. By
 
 
 ## Details and process
-![image of the project](https://github.com/whatchamacallit233/DAT505-GitHub/blob/master/Xiaowei%20Ji-DAT505-Assignment/texture/3.jpg)
+![image of the project](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/3.jpg)
 
 To begin with,I write basic code to set scene, camera, renderer, light. Then I create a river and use a water texture as the material :
 ```javascript
@@ -335,7 +335,7 @@ if (drops[i].lifespan < 0) {
 Another challenging function is creating clouds by click.
 Originally, with the purpose of showing the relationship between water and clouds. I want to creat clouds by clicking river. While, the river restricts the clouds' position.
 
-![created clouds in river](https://github.com/whatchamacallit233/DAT505-GitHub/blob/master/Xiaowei%20Ji-DAT505-Assignment/texture/failed.jpg)
+![created clouds in river](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/failed.jpg)
 
 Then I set an invisible clickable plane in the sky, which is parallel to the ground:
 ```javascript
