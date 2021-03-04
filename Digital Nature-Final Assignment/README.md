@@ -366,7 +366,7 @@ console.log(object)
 ```
 It shows that its in the type of 'group' and I found the children of it:
 
-![console](https://github.com/whatchamacallit233/DAT505-GitHub/blob/master/Xiaowei%20Ji-DAT505-Assignment/texture/console.jpg)
+![console](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/console.jpg)
 
 So I changed the color of clouds by the following code:
 ```javascript
