@@ -1,5 +1,5 @@
 # Xiaowei Ji
-my github link: https://github.com/whatchamacallit233/DAT505-GitHub
+my github link: https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI
 ## files included:
 * ##### '4 images  of final screen composition' file :
  4 preview pictures
