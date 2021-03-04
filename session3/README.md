@@ -2,8 +2,8 @@
 ## 00-BasicStructure-my work
 This session we got the concept of GUI(Graphical User Interface).
 To be more specific,we learnt how to create a new DAT.GUI and add controller values for GUI.
-To begin with,it is necessary to add dat.gui.min.js to js package.In addition ,add the following code in index.html:
-    ```javascript
+To begin with, it is necessary to add dat.gui.min.js to js package.In addition ,add the following code in index.html:
+```javascript
       </script><script src="js/dat.gui.min.js"></script>
 ```
 Then,add the following code to add initial controller values for GUI
