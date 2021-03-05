@@ -1,5 +1,6 @@
 # session 8
-##S8-01-RaycastSprite-my work
+## S8-01-RaycastSprite-my work
+![801](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/801.png)  
 add the following codes to make function works when mouse move or clicks:
 ```javascript
 window.addEventListener( 'mousemove', onDocumentMousemove,false);
@@ -42,8 +43,8 @@ function onDocumentMouseDown( event ) {
 }
 ```
 
-##S8-02-objLoader-Raycasting-my work
-
+## S8-02-objLoader-Raycasting-my work
+![802](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/802.png)  
 Model/material loading:
 ```javascript
 var mtlLoader = new THREE.MTLLoader();
