@@ -1,5 +1,6 @@
 # session 6
 ## S6-01-CityScape-full-my work
+![6](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/6.png)  
 Firstly,set buildings show by wireframe.
 ```javascript
 var material = new THREE.MeshBasicMaterial({color:Math.random()*0xFFFFFF,wireframe:true});
