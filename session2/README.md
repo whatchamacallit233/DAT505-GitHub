@@ -1,5 +1,6 @@
 # session 2
 ## 02-GeometriesAndMaterials-my work
+![202](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/202.png)
 I changed material of each cube,and use different numbers to distinguish different materials.
 Each mesh can use different geometries and different materials by this code:
 ```javascript
@@ -45,6 +46,7 @@ We can set different rotation to different mesh:
   ```
 
 ## 03-COPY-ThreeJS-Materials my work
+![203](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/203.png)
 For this exercise, we were asked to copy one example on Threejs and make it work on our computers.
 First,I chose a project named buffergeometry/constructed/from/geometry from threejs.org website.
 Then,I viewed the source of head part and searched referenced js files from threejs material package which we have downloaded.
@@ -64,6 +66,7 @@ Finally,I copied the rest code of body part into my index.js and changed index.h
 
 
 ## 04-homework
+![204](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/204.png)
 I Created a composition with 3 geometries by using different materials.
 One of it is BoxGeometry,made by MeshPhongMaterial：
 ```javascript
