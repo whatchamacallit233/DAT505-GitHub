@@ -1,5 +1,7 @@
 # session 1
 ## 01-Test
+![1test1](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/1test1.png)
+
 Except some basic settings(scene,camera,render),this project uses#B0E0E6 as background color,the main object is CylinderBufferGeometry with MeshLamberMaterial,which is showed by wireframe.
 ```javascript
 function geometry(){
@@ -27,6 +29,7 @@ var render = function () {
 
 
 ## 02-homework-GeometriesAndMaterials
+![1test2](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/1test2.png)
 It made by three IcosahedronBufferGeometries with different size. While,they have the same center point.Meanwhile,the smallest and the biggest one are set by the same material:MeshNormalMaterial,which makes them seem colourful.
 ```javascript
 function geometry(){
