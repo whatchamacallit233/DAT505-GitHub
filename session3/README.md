@@ -57,6 +57,7 @@ var f1=gui.addFolder('Scale');
 
 ## homework
 ![3h](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/3h.png)
+
 Add OrbitControls.js to move the rotation of object by mouse:
 ```javascript
 var controls=new THREE.OrbitControls(camera,renderer.domElement);
