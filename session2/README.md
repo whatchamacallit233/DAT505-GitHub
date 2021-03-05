@@ -46,7 +46,7 @@ We can set different rotation to different mesh:
   ```
 
 ## 03-COPY-ThreeJS-Materials my work
-![203](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/203.png)
+![203](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/203.png)    
 For this exercise, we were asked to copy one example on Threejs and make it work on our computers.
 First,I chose a project named buffergeometry/constructed/from/geometry from threejs.org website.
 Then,I viewed the source of head part and searched referenced js files from threejs material package which we have downloaded.
