@@ -30,6 +30,7 @@ var render = function () {
 
 ## 02-homework-GeometriesAndMaterials
 ![1test2](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/1test2.png)
+
 It made by three IcosahedronBufferGeometries with different size. While,they have the same center point.Meanwhile,the smallest and the biggest one are set by the same material:MeshNormalMaterial,which makes them seem colourful.
 ```javascript
 function geometry(){
