@@ -1,6 +1,6 @@
 # session 9
 ## S9-01-RaycastAudio-my work
-we have learned how to add audio to object:
+I have learned how to add audio to object:
 ```javascript
 // create an AudioListener and add it to the camera
 var listener = new THREE.AudioListener();
@@ -18,4 +18,5 @@ function init() {
 ```
 
 ## S9-02-PostProcessing-Glitch-class test
-we have learnt how to add shaders.
+I have learnt how to add shaders.
+![902](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/902.png)
