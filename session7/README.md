@@ -1,5 +1,6 @@
 # session 7
 ## S7-02-texture-cube practice-my work
+![702](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/702.png)
 add 3 texture as cubes' material and let then show randomly
 
 ```javascript
@@ -26,7 +27,8 @@ add 3 texture as cubes' material and let then show randomly
   	}
   }
 ```
-##S7-04-Texture-Eyes-homework
+## S7-04-Texture-Eyes-homework
+![704](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/704.png)
 set each eye in ramdom position :
 ```javascript
 for(var i=0;i<cubesNum;i++){
