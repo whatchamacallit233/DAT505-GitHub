@@ -1,7 +1,6 @@
 # session 5
 ## S5-arraymesh-homework
-![5h](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/5h.png)
-
+![5h](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/5h.png)  
 my project is made by plenty of colorful dynamic objects which can stretch and shrink automatically.
 Create a three dimensional grid of objects, and position them accordingly,set random color and wireframe:
 ```javascript
