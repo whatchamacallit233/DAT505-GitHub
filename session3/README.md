@@ -1,6 +1,6 @@
 # session 3
 ## 00-BasicStructure-my work
-![300](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/300.png)
+![301](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/301.png)
 This session we got the concept of GUI(Graphical User Interface).
 To be more specific,we learnt how to create a new DAT.GUI and add controller values for GUI.
 To begin with, it is necessary to add dat.gui.min.js to js package.In addition ,add the following code in index.html:
