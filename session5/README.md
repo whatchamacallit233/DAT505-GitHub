@@ -38,6 +38,4 @@ c.rotation.y=0.01;
 ```
 
 ## S5-arraymesh-classtest-my work
-![5m](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/5m.png)
-
-I learnt how to set animation to specific cubes or for each cube.
+![5m](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/5m.png)   I learnt how to set animation to specific cubes or for each cube.
