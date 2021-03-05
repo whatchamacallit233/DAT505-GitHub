@@ -8,8 +8,7 @@ mesh.rotation.z=Math.random()*2*Math.PI;
 ```
 
 ## ArrayMesh-dynamic-homework2
-![402](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/402.png)
-
+![402](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/402.png)  
 It is a dynamic project on website,continuous rotations for each cube independently in different rotation and speed.
 The difference from static project is setting random values for x and y:
 ```javascript
@@ -29,8 +28,7 @@ I added some code in animation function part:
   });
 ```
 ## S4-ArrayMesh class test-my work
-![403](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/403.png)
-
+![403](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/403.png)  
 It is a dynamic project,it combined by 64 rotating cubes.
 After set basic function of the project,I created a three dimensional grid of objects, and position them accordingly:
 ```javascript
