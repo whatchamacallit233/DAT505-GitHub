@@ -1,6 +1,6 @@
 # session 2
 ## 02-GeometriesAndMaterials-my work
-![202](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/202.png)
+![202](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/202.png)  
 I changed material of each cube,and use different numbers to distinguish different materials.
 Each mesh can use different geometries and different materials by this code:
 ```javascript
@@ -66,7 +66,7 @@ Finally,I copied the rest code of body part into my index.js and changed index.h
 
 
 ## 04-homework
-![204](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/204.png)
+![204](https://github.com/whatchamacallit233/CreativeCoding--Xiaowei-JI/blob/master/Digital%20Nature-Final%20Assignment/texture/204.png)  
 I Created a composition with 3 geometries by using different materials.
 One of it is BoxGeometry,made by MeshPhongMaterial：
 ```javascript
