@@ -21,7 +21,7 @@ the model of 'cloud'
 6 different angles pictures of sky
 
 * ##### 'texture'files:
-textures used in the readme and project: river, water drop, trees and the bridge
+textures used in the readme and project
 
 ## introduction
 'Digital Nature'  is a digital park that provides an interactive experience for audiences.
